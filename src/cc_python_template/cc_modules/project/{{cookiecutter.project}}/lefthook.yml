@@ -1,0 +1,6 @@
+pre-commit:
+  jobs:
+    - name: lint
+      run: ruff check
+    - name: test
+      run: pytest

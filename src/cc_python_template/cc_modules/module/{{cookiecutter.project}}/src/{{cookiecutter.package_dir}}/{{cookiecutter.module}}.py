@@ -1,0 +1,4 @@
+
+
+def {{cookiecutter.module}}():
+    pass
