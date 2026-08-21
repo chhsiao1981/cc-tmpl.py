@@ -4,14 +4,14 @@ import re
 from cookiecutter.main import cookiecutter
 
 
-def _dash_to_underscore(the_str):
+def _nonword_to_underscore(the_str):
     '''
-    dash style to underscore style.
+    nonword to underscore style.
 
     ex:
     the-str => the_str
     '''
-    return re.sub(r'-', '_', the_str)
+    return re.sub(r'\W+', '_', the_str)
 
 
 def _underscore_to_uppercase(the_str):
@@ -48,9 +48,9 @@ def _underscore_to_camelcase(the_str):
 
 def generate(tmpl_dir: str, full_name: str, is_force):
     project_with_dash = os.path.basename(os.getcwd())
-    project = _dash_to_underscore(project_with_dash)
+    project = _nonword_to_underscore(project_with_dash)
 
-    full_name_ = _dash_to_underscore(full_name)
+    full_name_ = _nonword_to_underscore(full_name)
 
     project_full_name_list = [project] + full_name_.split('.')
 
