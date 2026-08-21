@@ -1,5 +1,5 @@
 [project]
-name = "cc-python-template"
+name = "cc-tmpl.py"
 version = "0.5.0"
 description = "An opinioned python template based on cookiecutter"
 readme = "README.md"
@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-"cc-tmpl.py" = "cc_python_template:main"
+"cc-tmpl.py" = "cc_tmpl_py:main"
 
 [build-system]
 requires = [
