@@ -5,6 +5,7 @@ import sys
 from .gen_docker import gen_docker
 from .gen_module import gen_module
 from .init import init
+from .list_commands import list_commands
 from .utils import ensure_dev_module, get_subcommands
 
 
@@ -45,16 +46,18 @@ def _argparse():
         default='docker.io',
         help='docker registry.')
 
+    subparsers.add_parser("commands", help='list commands.')
+
     known_commands = get_subcommands(parser)
     ensure_dev_module(known_commands, singleton_flags)
 
     args = parser.parse_args()
 
-    return args
+    return args, parser
 
 
 def main():
-    args = _argparse()
+    args, parser = _argparse()
 
     if args.command == 'init':
         init(args.dir, args.force)
@@ -62,3 +65,5 @@ def main():
         gen_module(args.dir, args.module, args.force)
     elif args.command == 'docker':
         gen_docker(args.dir, args.registry, args.force)
+    elif args.command == 'commands':
+        list_commands(parser)
