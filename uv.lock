@@ -38,16 +38,12 @@ wheels = [
 ]
 
 [[package]]
-name = "cc-python-template"
+name = "cc-tmpl-py"
 version = "0.5.0"
 source = { editable = "." }
 dependencies = [
-    { name = "cookiecutter" },
-]
-
-[package.dev-dependencies]
-dev = [
     { name = "autopep8" },
+    { name = "cookiecutter" },
     { name = "lefthook" },
     { name = "pytest" },
     { name = "pytest-cov" },
@@ -55,11 +51,9 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "cookiecutter", specifier = "==2.7.1" }]
-
-[package.metadata.requires-dev]
-dev = [
+requires-dist = [
     { name = "autopep8", specifier = "==2.3.2" },
+    { name = "cookiecutter", specifier = "==2.7.1" },
     { name = "lefthook", specifier = "==2.1.10" },
     { name = "pytest", specifier = "==9.1.1" },
     { name = "pytest-cov", specifier = "==7.1.0" },
