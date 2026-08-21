@@ -1,7 +1,5 @@
 import logging
 
-COMMANDS = ['init', 'dev', 'docker']
-
 PROJECT = 'cc_tmpl_py'
 
 

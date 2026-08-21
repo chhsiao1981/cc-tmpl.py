@@ -5,11 +5,13 @@ import sys
 from .gen_docker import gen_docker
 from .gen_module import gen_module
 from .init import init
-from .utils import ensure_command
+from .utils import ensure_dev_module, get_subcommands
 
 
 def _argparse():
+
     parser = argparse.ArgumentParser(prog=os.path.basename(sys.argv[0]))
+    singleton_flags = []
 
     parser.add_argument(
         '-d',
@@ -26,6 +28,7 @@ def _argparse():
         required=False,
         action='store_true',
         help='replace the file if it already exists.')
+    singleton_flags = singleton_flags + ['-f', '--force']
 
     subparsers = parser.add_subparsers(dest="command", required=False)
 
@@ -42,7 +45,8 @@ def _argparse():
         default='docker.io',
         help='docker registry.')
 
-    ensure_command()
+    known_commands = get_subcommands(parser)
+    ensure_dev_module(known_commands, singleton_flags)
 
     args = parser.parse_args()
 
