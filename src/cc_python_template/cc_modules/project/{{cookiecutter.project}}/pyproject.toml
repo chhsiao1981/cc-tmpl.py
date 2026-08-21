@@ -1,0 +1,55 @@
+[project]
+name = '{{cookiecutter.project_name_with_dash}}'
+version = '0.0.1'
+description = ''
+readme = 'README.md'
+license = {file = 'LICENSE'}
+authors = [
+    # {name = '', email = ''},
+]
+requires-python = ">=3.10"
+dependencies = [
+]
+keywords = [
+]
+classifiers = [
+    'Programming Language :: Python :: 3',
+    'Operating System :: OS Independent',
+]
+
+[project.urls]
+# Homepage      = ''
+# Documentation = ''
+# Repository    = ''
+# 'Bug Tracker' = ''
+# Changelog = ''
+
+[project.scripts]
+
+[build-system]
+requires = [
+    "uv_build>=0.12.5,<0.13.0",
+]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff==0.16.3",      # use ruff check --fix, not ruff format.
+    "pytest==9.1.1",
+    "pytest-cov==7.1.0",
+    "lefthook==2.1.10",
+    "autopep8==2.3.2",   # autopep8 is better in whitespace formatting.
+]
+
+[tool.autopep8]
+max_line_length = 100
+
+[tool.ruff]
+line-length = 100
+preview     = true
+
+[tool.ruff.lint]
+extend-select = [
+    "E",
+    "W",
+]
