@@ -3,4 +3,4 @@ pre-commit:
     - name: lint
       run: ruff check
     - name: test
-      run: pytest
+      run: pytest --color=yes --cov-report=term-missing --cov=src

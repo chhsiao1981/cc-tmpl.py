@@ -50,22 +50,26 @@ def generate(tmpl_dir: str, full_name: str, is_force):
     project_with_dash = os.path.basename(os.getcwd())
     project = _dash_to_underscore(project_with_dash)
 
-    full_name_list = [project] + full_name.split('.')
+    full_name_ = _dash_to_underscore(full_name)
 
-    pkg = '.'.join(full_name_list[:-1])
-    module = full_name_list[-1]
+    project_full_name_list = [project] + full_name_.split('.')
+
+    pkg = '.'.join(project_full_name_list[:-1])
+    module = project_full_name_list[-1]
 
     pkg_name = pkg
     project_name = project
     include_pkg = pkg
 
-    package_dir = '/'.join(full_name_list[:-1])
+    package_dir = '/'.join(project_full_name_list[:-1])
 
     include_package_dir = package_dir
 
-    test_package_dir = '/'.join(['test_' + each_pkg for each_pkg in full_name_list[1:-1]])
+    test_package_dir = '/'.join(['test_' + each_pkg for each_pkg in project_full_name_list[1:-1]])
 
     the_dict = {
+        'full_name': full_name,
+
         'pkg': pkg,
         'module': module,
         # 'project': project, # XXX already included in cookiecutter.
@@ -80,6 +84,8 @@ def generate(tmpl_dir: str, full_name: str, is_force):
         'include_package_dir': include_package_dir,
         'test_package_dir': test_package_dir,
 
+        'full_name_': full_name_,
+
         'PKG': _underscore_to_uppercase(pkg),
         'MODULE': _underscore_to_uppercase(module),
         'PROJECT': _underscore_to_uppercase(project),
@@ -89,6 +95,7 @@ def generate(tmpl_dir: str, full_name: str, is_force):
         'PACKAGE_DIR': _underscore_to_uppercase(package_dir),
         'INCLUDE_PACKAGE_DIR': _underscore_to_uppercase(include_package_dir),
         'TEST_PACKAGE_DIR': _underscore_to_uppercase(test_package_dir),
+        'FULL_NAME': _underscore_to_uppercase(full_name_),
 
         'Pkg': _underscore_to_pascal_case(pkg),
         'Module': _underscore_to_pascal_case(module),
@@ -99,6 +106,7 @@ def generate(tmpl_dir: str, full_name: str, is_force):
         'PackageDir': _underscore_to_pascal_case(package_dir),
         'IncludePackageDir': _underscore_to_pascal_case(include_package_dir),
         'TestPackageDir': _underscore_to_pascal_case(test_package_dir),
+        'FullName': _underscore_to_pascal_case(full_name_),
 
         'pkgCamel': _underscore_to_camelcase(pkg),
         'moduleCamel': _underscore_to_camelcase(module),
@@ -108,7 +116,8 @@ def generate(tmpl_dir: str, full_name: str, is_force):
         'includePkg': _underscore_to_camelcase(include_pkg),
         'packageDir': _underscore_to_camelcase(package_dir),
         'includePackageDir': _underscore_to_camelcase(include_package_dir),
-        'testPackageDir': _underscore_to_camelcase(test_package_dir)
+        'testPackageDir': _underscore_to_camelcase(test_package_dir),
+        'fullName': _underscore_to_camelcase(full_name_),
     }
 
     skip_if_file_exists = not is_force
