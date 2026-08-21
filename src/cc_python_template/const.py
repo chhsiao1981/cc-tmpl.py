@@ -1,6 +1,6 @@
 import logging
 
-COMMANDS = ['init', 'dev']
+COMMANDS = ['init', 'dev', 'docker']
 
 PROJECT = 'cc_python_template'
 

@@ -2,6 +2,7 @@ import argparse
 import os.path
 import sys
 
+from .gen_docker import gen_docker
 from .gen_module import gen_module
 from .init import init
 from .utils import ensure_command
@@ -33,6 +34,14 @@ def _argparse():
     dev_parser = subparsers.add_parser("dev", help='create a module.')
     dev_parser.add_argument(dest="module")
 
+    docker_parser = subparsers.add_parser("docker", help='create docker scripts.')
+    docker_parser.add_argument(
+        '-r',
+        '--registry',
+        required=False,
+        default='docker.io',
+        help='docker registry.')
+
     ensure_command()
 
     args = parser.parse_args()
@@ -47,3 +56,5 @@ def main():
         init(args.dir, args.force)
     elif args.command == 'dev':
         gen_module(args.dir, args.module, args.force)
+    elif args.command == 'docker':
+        gen_docker(args.dir, args.registry, args.force)
