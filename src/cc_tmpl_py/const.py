@@ -2,7 +2,7 @@ import logging
 
 COMMANDS = ['init', 'dev', 'docker']
 
-PROJECT = 'cc_python_template'
+PROJECT = 'cc_tmpl_py'
 
 
 class ColoredFormatter(logging.Formatter):
