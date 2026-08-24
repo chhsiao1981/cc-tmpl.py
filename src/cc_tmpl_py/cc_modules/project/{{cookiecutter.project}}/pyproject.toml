@@ -34,11 +34,12 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
-    "ruff==0.16.3",      # use ruff check --fix, not ruff format.
+    "ruff==0.16.3",        # use ruff check --fix, not ruff format.
     "pytest==9.1.1",
     "pytest-cov==7.1.0",
+    "pytest-async==1.4.0",
     "lefthook==2.1.10",
-    "autopep8==2.3.2",   # autopep8 is better in whitespace formatting.
+    "autopep8==2.3.2",     # autopep8 is better in whitespace formatting.
 ]
 
 [tool.autopep8]

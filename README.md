@@ -21,18 +21,12 @@ Starting v0.7.0:
 To install with [`uv`](https://docs.astral.sh/uv/):
 
 ```sh
-uv tool install ruff
-uv tool install pytest
-uv tool install lefthook
 uv tool install cc-tmpl.py
 ```
 
 To install with [`pipx`](https://pipx.pypa.io/stable/):
 
 ```sh
-pipx install ruff
-pipx install pytest
-pipx install lefthook
 pipx install cc-tmpl.py
 ```
 
