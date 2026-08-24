@@ -1,4 +1,9 @@
 pre-commit:
   jobs:
+    - name: uv sync
+      run: uv sync && git add uv.lock
+      stage_fixed: true
     - name: lint
       run: ruff check
+    - name: test
+      run: pytest --color=yes --cov-report=term-missing --cov=src
