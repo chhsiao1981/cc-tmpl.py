@@ -15,6 +15,7 @@ keywords = [
 classifiers = [
     'Programming Language :: Python :: 3',
     'Operating System :: OS Independent',
+    'Private :: Do Not Upload',
 ]
 
 [project.urls]
