@@ -11,7 +11,7 @@ def _nonword_to_underscore(the_str):
     ex:
     the-str => the_str
     '''
-    return re.sub(r'\W+', '_', the_str)
+    return re.sub(r'[^0-9A-Za-z.]', '_', the_str)
 
 
 def _underscore_to_uppercase(the_str):
